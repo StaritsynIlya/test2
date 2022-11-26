@@ -1,6 +1,8 @@
-var app = new Vue ({
-    el: '#app',
-    data: {
-        message: 'Hello, World'
+Vue.component('comments', {
+    template: '<input>',
+    data() {
+        return {
+            name: null
+        }
     }
 })
