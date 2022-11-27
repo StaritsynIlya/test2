@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-recaptcha@^2/dist/vue-recaptcha.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer>
+    </script>
     <title>Image and comments</title>
 </head>
 <body>
@@ -20,6 +23,7 @@
                 <input type="text" v-model="newTask.name">
                 <textarea type="text" v-model="newTask.desc"></textarea>
             </div>
+            <vue-racaptcha> </vue-racaptcha>
             <button class = "add_task__btn" @click="add_task">+</button>
         </div>
     </div>
