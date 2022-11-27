@@ -1,5 +1,10 @@
 Vue.component('task',{
     props: ["data"],
+    data(){
+        return{
+
+        }
+    },
     methods: {
         task_done() {
             this.$emit('task_done');
@@ -9,7 +14,7 @@ Vue.component('task',{
     <div class="task">
         <div>
             <h3 class = "task__title">{{data.title}}</h3>
-            <p class = "task__desc"">{{data.desc}}</p>
+            <p v-if="data.desc!=''" class = "task__desc"">{{data.desc}}</p>
         </div>
         <button @click = "task_done()" class = "task__done">Delete</button>
     </div>
@@ -17,7 +22,7 @@ Vue.component('task',{
 })
 
 var vue = new Vue({
-    el: "#app",
+    el: '#app',
     data: {
         newTask:{
             title: '',
@@ -36,18 +41,17 @@ var vue = new Vue({
     },
     methods: {
         add_task(){
-            if(this.new_task.title != ''){
+            if(this.newTask.title != ''){
               this.tasks.push({
-                title: this.new_task.title,
-                desc: this.new_task.desc
+                title: this.newTask.title,
+                desc: this.newTask.desc
               });
-              this.new_task.title='';
-              this.new_task.desc='';
+              this.newTask.title='';
+              this.newTask.desc='';
             }
           },
         delete_task(id){
             this.tasks.splice(id, 1);
         }
     }
-    
 })
