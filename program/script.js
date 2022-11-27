@@ -13,7 +13,8 @@ Vue.component('task',{
     template: `
     <div class="task">
         <div>
-            <h3 class = "task__title">{{data.title}}</h3>
+            <h3 class = "task__titel">{{data.name}}</h3>
+            <div class="fullDate">{{data.time}}</div>
             <p v-if="data.desc!=''" class = "task__desc"">{{data.desc}}</p>
         </div>
         <button @click = "task_done()" class = "task__done">Delete</button>
@@ -25,29 +26,34 @@ var vue = new Vue({
     el: '#app',
     data: {
         newTask:{
-            title: '',
-            desc: ''
+            name: '',
+            desc: '',
+            time: ''
         },
         tasks: [
             {
-                title: 'Изучить Vue.js',
-                desc: 'Прочитать книгу'
+                name: 'Олег',
+                desc: 'Прочитать книгу',
+                time: '1.4.2020 12:28'
             },
             {
-                title: 'Записаться к врачу',
-                desc: 'Поговорить с жирафом'
+                name: 'Антон',
+                desc: 'Поговорить с жирафом',
+                time: '25.7.2021 19:35'
             }
         ]
     },
     methods: {
         add_task(){
-            if(this.newTask.title != ''){
+            if(this.newTask.name != ''){
               this.tasks.push({
-                title: this.newTask.title,
-                desc: this.newTask.desc
+                name: this.newTask.name,
+                desc: this.newTask.desc,
+                time: this.newTask.time = new Date().getDate()+'.'+ (new Date().getMonth()+1)+'.'+ new Date().getFullYear()+' '+new Date().getHours()+':'+new Date().getMinutes()
               });
-              this.newTask.title='';
+              this.newTask.name='';
               this.newTask.desc='';
+              this.newTask.time='';
             }
           },
         delete_task(id){
