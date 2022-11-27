@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>Image and comments</title>
 </head>
 <body>
-    <div id = "app">
-        <span> Введите ваш комментарий: </span>
-        <input v-model = "name">
+    <img src="/img/photo_test.jpg" alt="">
+    <div id="app">
+        <div class="status">
+            <h3>Комментарии</h3>
+            <task @task_done="delete_task(index)" :data="data" v-for = "(data, index) in tasks" :key = "index"></task>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src = "script.js"></script>
+        </div>
+        <div class = "add_task">
+            <div class = "add_task__input">
+                <input type="text" v-model="newTask.title">
+                <textarea v-model="new_task.desc"></textarea>
+            </div>
+            <button @click="add_task()" class = "add_task__btn">+</button>
+        </div>
 </body>
+<script src = "script.js"></script>
 </html>
