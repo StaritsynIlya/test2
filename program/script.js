@@ -1,4 +1,3 @@
-Vue.component('vue-recaptcha', VueRecaptcha)
 Vue.component('task',{
     props: ["data"],
     data(){

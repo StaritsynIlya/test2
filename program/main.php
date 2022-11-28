@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-recaptcha@^2/dist/vue-recaptcha.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer>
-    </script>
     <title>Image and comments</title>
 </head>
 <body>
+    <?php
+        include 'PHP.php';
+    ?>
     <img src="/img/photo_test.jpg" alt="">
     <div id="app">
         <div class="status">
