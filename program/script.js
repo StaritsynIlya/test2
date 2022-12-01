@@ -6,9 +6,9 @@ Vue.component('task',{
         }
     },
     methods: {
-        task_done() {
-            this.$emit('task_done');
-        }
+      task_done() {
+        this.$emit('task_done');
+      }
     },
     template: `
     <div class="task">
@@ -31,20 +31,39 @@ var vue = new Vue({
             time: ''
         },
         tasks: [
-            {
-                name: 'Олег',
-                desc: 'Прочитать книгу',
-                time: '1.4.2020 12:28'
-            },
-            {
-                name: 'Антон',
-                desc: 'Поговорить с жирафом',
-                time: '25.7.2021 19:35'
-            }
+
         ]
     },
     methods: {
         add_task(){
+          fetch('PHP.php', {
+
+            method: 'POST',
+
+            headers: {
+
+              'Content-Type': 'application/json',
+
+            },
+
+            body: JSON.stringify({
+
+            name: this.name,
+
+            desc: this.desc,
+
+            time: this.time
+
+          }),
+
+        }).then(response => {
+          console.log(response);
+
+        }).catch(error => {
+
+          console.log(error);
+        });
+
             if(this.newTask.name != ''){
               this.tasks.push({
                 name: this.newTask.name,
@@ -59,5 +78,8 @@ var vue = new Vue({
         delete_task(id){
             this.tasks.splice(id, 1);
         }
-    }
+        
+    },
+
+    
 })
